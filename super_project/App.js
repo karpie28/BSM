@@ -9,13 +9,8 @@ Props = {};
 export default class App extends Component<Props> {
 
     state = {
-        password: '',
         step: 0,
         text: 0,
-        passwordToRead: '',
-        passwordToChange: '',
-        oldPassword: '',
-        changedSuccessfully: false
     };
 
     componentDidMount() {
@@ -42,8 +37,6 @@ export default class App extends Component<Props> {
     saveText = async () => {
         await this.setText(this.state.text)
         this.setState({step: 0})
-
-        await AsyncStorage.getItem('password');
         await AsyncStorage.getItem('text');
     };
 
@@ -61,11 +54,6 @@ export default class App extends Component<Props> {
     render() {
         return (
             <View style={styles.container}>
-                {
-                    this.state.step === 1 && [
-
-                    ]
-                }
                 {
                     this.state.step === 1 && [
                         <TouchableHighlight key="button3" onPress={this.decryptMessage}>
